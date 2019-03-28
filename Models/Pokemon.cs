@@ -4,40 +4,43 @@ using System.Linq;
 using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
+using System.Threading.Tasks;
 
 namespace Project.Models{
     public class Pokemon{
 
         IFirebaseConfig config = new FirebaseConfig { AuthSecret = "zqEswzoN5eplAQUWJC3GNDxsmR7KMKlJNWdu53Rd", BasePath = "https://pokedex-a0400.firebaseio.com" };
         IFirebaseClient client;
+        FirebaseResponse response = null;
+
         public enum Type
         {
             Normal, Fighting, Flying, Poison, Ground, Rock, Bug, Ghost, Steel,
             Fire, Water, Grass, Electric, Psychic, Ice, Dragon, Dark, Fairy,
             Unknown,Null
         }
-      public enum Rarity { Common, Uncommon, Rare }
-      public enum Move { /* TODO */ }
-      public uint number { get; private set; }
+      public enum Rarity { Common, Uncommon, Rare,Unknown }
+      public enum Move { tackle/* TODO */ }
+      public string number { get; private set; }
       public string name { get; private set; }
       public Type type1 { get; private set; }
       public Type type2 { get; private set; } = Type.Null;
       public string description {get; private set;}
-      public double weight {get;private set;}
-      public double height {get;private set;}
-      public uint level { get; private set; }
-      public uint hp { get; private set; }
-      private Pokemon evolvesFrom = null;
-      public Pokemon evolvesInto = null;
+      public string weight {get;private set;}
+      public string height {get;private set;}
+      public string level { get; private set; }
+      public string hp { get; private set; }
+      private Pokemon evolvesFrom{get; set;} = null;
+      public Pokemon evolvesInto{get; set;} = null;
+      public string Pre_Evolution { get; private set; }
+      public string Evolution { get; private set; }
       public Rarity rarity{get;private set;}
      
-
-     public bool firstForm{get;private set;}
-     public bool finalForm{get;private set;}
      public Move move1{get;private set;}
      public Move move2{get;private set;}
      public Move move3{get;private set;}
      public Move move4{get;private set;}
+     private Rarity[] rarities = { Rarity.Common, Rarity.Rare, Rarity.Uncommon, Rarity.Unknown };
      private Type[] types= {Type.Normal,Type.Fighting,Type.Flying,Type.Poison,Type.Ground,Type.Rock,Type.Bug,Type.Ghost,
      Type.Steel,Type.Fire,Type.Water,Type.Grass,Type.Electric,Type.Psychic,Type.Ice,Type.Dragon,Type.Dark,Type.Fairy};
      private double[,] battleChart=new double[,] {{1,1,1,1,1,0.5,1,0,0.5,1,1,1,1,1,1,1,1,1},{2,1,0.5,0.5,1,2,0.5,0,2,1,1,1,1,0.5,2,1,2,0.5},
@@ -52,35 +55,62 @@ namespace Project.Models{
          
      public Type[] weaknesses{ get; private set; }
      public Type[] strengths{ get; private set; }
-     public string url { get; private set; }
+     public string Image { get; private set; }
 
+
+    public async void Resp(string name) {
+            this.response=await client.GetTaskAsync("Information/" + name);
+        }
+
+    public Rarity getRarity(string rarity) {
+            for (int i = 0; i < rarities.Length - 1; i++)
+                if (Enum.GetName(typeof(Rarity), i) == rarity)
+                    return rarities[i];
+            return Rarity.Unknown;
+     }
+
+     public Move getMove(string name)
+        {
+            return Move.tackle;
+        }
+    public Type getType(string type) {
+            for (int i = 0; i < types.Length-1; i++) {
+                if (Enum.GetName(typeof(Type), i) == type)
+                    return types[i];
+            }
+            return Type.Null;
+        }
     public Pokemon(string name)
         {
-            this.name = name;
-            url = this.name + ".jpg";
             client = new FireSharp.FirebaseClient(config);
-            //get imfo from database
-        }
-    public Pokemon(uint number)
-        {
-            this.number = number;
-            url = name + ".jpg";
-            client = new FireSharp.FirebaseClient(config);
-            //get imfo from database
-        }
-
-
-    public void evolve(){
-         if(finalForm){
-             evolvesInto = null;
-         }else evolvesInto = new Pokemon(number+1);
+            Resp(name);
+            Data obj = response.ResultAs<Data>();
+            this.name = obj.Name;
+            this.number = obj.Number;
+            this.Image = obj.Image;
+            this.type1 = getType(obj.Type_1);
+            this.type2 = getType(obj.Type_2);
+            this.move1 = getMove(obj.Move1);
+            this.move2 = getMove(obj.Move2);
+            this.move3 = getMove(obj.Move3);
+            this.move4 = getMove(obj.Move4);
+            this.description = obj.Description;
+            this.weight = obj.Weight;
+            this.height = obj.Height;
+            this.level = obj.Level;
+            this.Pre_Evolution = obj.Pre_Evolution;
+            this.Evolution = obj.Evolution;
+            this.rarity = getRarity(obj.Status);
+            strengthsAndWeaknesses();
     }
 
-    public void devolve(){
-         if(finalForm){
-             evolvesFrom = null;
-         } else evolvesFrom = new Pokemon(number-1);
-    }
+    public Pokemon evolve() {
+            return new Pokemon(this.Evolution);
+        }
+
+    public Pokemon devolve() {
+            return new Pokemon(this.Pre_Evolution);
+        }
 
     public void strengthsAndWeaknesses() {
             strengths = setStrengths();
@@ -133,4 +163,5 @@ namespace Project.Models{
      }
 
     }
+
 }

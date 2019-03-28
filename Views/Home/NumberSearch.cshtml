@@ -1,0 +1,11 @@
+﻿@{
+    ViewData["Title"] = "Search by Number";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Enter a Number</h1>
+    <p>
+        Name: <input type="number" name="number" placeholder="01"><br>
+        <input type = "submit" id = "submit" name = "submit" value = "Search" onclick=" location.href = ' @Url.Action("PokemonDisplay", "Home" )?number=' + document.getElementById('txtName').value " />
+    </p>
+</div>

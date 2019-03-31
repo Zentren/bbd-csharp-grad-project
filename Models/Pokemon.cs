@@ -106,6 +106,7 @@ namespace Project.Models{
             this.weight = obj.Weight;
             this.height = obj.Height;
             this.level = obj.Level;
+            //this.hp = obj.Hp;
             this.Pre_Evolution = obj.Pre_Evolution;
             this.Evolution = obj.Evolution;
             this.rarity = getRarity(obj.Status);

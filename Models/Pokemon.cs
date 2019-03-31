@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Speech.Synthesis;
+//using System.Speech.Synthesis;
 using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
@@ -113,20 +113,20 @@ namespace Project.Models{
             strengthsAndWeaknesses();
     }
 
-    public infoToSpeech(){
-        SpeechSynthesizer synthesizer = new SpeechSynthesizer();
-            synthesizer.Volume = 100;  // 0...100
-            synthesizer.Rate = -2;     // -10...10
+    // public infoToSpeech(){
+    //     SpeechSynthesizer synthesizer = new SpeechSynthesizer();
+    //         synthesizer.Volume = 100;  // 0...100
+    //         synthesizer.Rate = -2;     // -10...10
 
-            // Synchronous
-            synthesizer.Speak(this.name);
+    //         // Synchronous
+    //         synthesizer.Speak(this.name);
             
-            synthesizer.Speak("Pokedex number "+this.number.ToString());
+    //         synthesizer.Speak("Pokedex number "+this.number.ToString());
 
-            synthesizer.Speak("Type "+this.type);
-            // Asynchronous
-            synthesizer.SpeakAsync(this.description);
-    }
+    //         synthesizer.Speak("Type "+this.type);
+    //         // Asynchronous
+    //         synthesizer.SpeakAsync(this.description);
+    // }
     public Pokemon evolve() {
             return new Pokemon(this.Evolution);
         }

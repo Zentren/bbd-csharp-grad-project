@@ -67,7 +67,8 @@ namespace Project.Models{
         Random random = new Random();  
         int attack = random.Next(1, 15); 
         int defense = random.Next(1, 15); 
-        return((this.hp+attack+defense)/45);
+        //return((this.hp+attack+defense)/45); FIXME
+        return 0;
     }
 
     public Rarity getRarity(string rarity) {

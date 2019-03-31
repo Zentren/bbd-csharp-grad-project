@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Speech.Synthesis;
 using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
@@ -62,6 +63,13 @@ namespace Project.Models{
             this.response=await client.GetTaskAsync("Information/" + name);
         }
 
+    public double getIV(){
+        Random random = new Random();  
+        int attack = random.Next(1, 15); 
+        int defense = random.Next(1, 15); 
+        return((this.hp+attack+defense)/45);
+    }
+
     public Rarity getRarity(string rarity) {
             for (int i = 0; i < rarities.Length - 1; i++)
                 if (Enum.GetName(typeof(Rarity), i) == rarity)
@@ -98,12 +106,27 @@ namespace Project.Models{
             this.weight = obj.Weight;
             this.height = obj.Height;
             this.level = obj.Level;
+            //this.hp = obj.Hp;
             this.Pre_Evolution = obj.Pre_Evolution;
             this.Evolution = obj.Evolution;
             this.rarity = getRarity(obj.Status);
             strengthsAndWeaknesses();
     }
 
+    public infoToSpeech(){
+        SpeechSynthesizer synthesizer = new SpeechSynthesizer();
+            synthesizer.Volume = 100;  // 0...100
+            synthesizer.Rate = -2;     // -10...10
+
+            // Synchronous
+            synthesizer.Speak(this.name);
+            
+            synthesizer.Speak("Pokedex number "+this.number.ToString());
+
+            synthesizer.Speak("Type "+this.type);
+            // Asynchronous
+            synthesizer.SpeakAsync(this.description);
+    }
     public Pokemon evolve() {
             return new Pokemon(this.Evolution);
         }

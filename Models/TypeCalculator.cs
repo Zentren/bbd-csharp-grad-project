@@ -141,7 +141,8 @@ namespace Project.Models
                         sb.Append(" ");
                     }
                 }
-                return sb.ToString();
+                var check = Shorten(sb.ToString());
+                return check;
             }
 
             /*

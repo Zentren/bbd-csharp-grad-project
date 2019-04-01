@@ -38,5 +38,16 @@ namespace Project.UnitTests.Models
             Assert.AreEqual(Expected, check);
         }
 
+        // [Test]
+        // public void TestgetSuperEffectiveAgainstWith2Type()
+        // {
+        //     Type type1check = Type.Fighting;
+        //     Type type2check = Type.Dark;
+        //     String Expected = "Normal Rock Steel Ice ";
+        //     TypeCalculator tc = new TypeCalculator();
+        //     string check = tc.getSuperEffectiveAgainst(type1check, type2check);
+        //     Assert.AreEqual(Expected, check);
+        // }
+
     }
 }

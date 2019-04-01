@@ -16,7 +16,7 @@ namespace Project.Data
             Pokemon pokemon = new Pokemon(
                 CheckNull(record.Number, "Number"), 
                 CheckNull(record.Name, "Name"), 
-                GetType(record.Type_1), 
+                GetType(record.Type_1, true), 
                 GetType(record.Type_2), 
                 CheckNull(record.Description, "Description"), 
                 CheckNull(record.Weight, "Weight"),

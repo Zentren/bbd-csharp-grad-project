@@ -29,9 +29,9 @@ namespace Project.UnitTests.Models
         [Test]
         public void factoryTest(){
             PokemonFactory factory = new PokemonFactory();
-            Pokemon pokemon = factory.GetPokemonByName("Pikachu");
+            Pokemon pokemon = factory.GetPokemonByName("Ivysaur");
             Assert.IsNotNull(pokemon);
-            Assert.AreEqual(pokemon.Name,"Pikachu");
+            Assert.AreEqual("IVYSAUR",pokemon.Name);
 
         }
         

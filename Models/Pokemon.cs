@@ -25,12 +25,7 @@ namespace Project.Models{
         public string Move2{get;private set;}
         public string Move3{get;private set;}
         public string Move4{get;private set;}   
-<<<<<<< HEAD
-        public string Weaknesses{ get; set; }
-        public string Strengths{ get; set; }
-=======
       
->>>>>>> origin/master
         public string Image { get; private set; }
         public double IV { get; private set; }
         

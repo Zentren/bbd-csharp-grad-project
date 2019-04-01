@@ -19,8 +19,7 @@ namespace Project.Models{
             Fire, Water, Grass, Electric, Psychic, Ice, Dragon, Dark, Fairy,
             Unknown,Null
         }
-      public enum Rarity { Common, Uncommon, Rare,Unknown }
-      public enum Move { tackle/* TODO */ }
+      public enum Rarity { Common, Uncommon, Rare,Unknown };
       public string number { get; private set; }
       public string name { get; private set; }
       public Type type1 { get; private set; }
@@ -36,10 +35,10 @@ namespace Project.Models{
       public string Evolution { get; private set; }
       public Rarity rarity{get;private set;}
      
-     public Move move1{get;private set;}
-     public Move move2{get;private set;}
-     public Move move3{get;private set;}
-     public Move move4{get;private set;}
+     public string move1{get;private set;}
+     public string move2{get;private set;}
+     public string move3{get;private set;}
+     public string move4{get;private set;}
      private Rarity[] rarities = { Rarity.Common, Rarity.Rare, Rarity.Uncommon, Rarity.Unknown };
      private Type[] types= {Type.Normal,Type.Fighting,Type.Flying,Type.Poison,Type.Ground,Type.Rock,Type.Bug,Type.Ghost,
      Type.Steel,Type.Fire,Type.Water,Type.Grass,Type.Electric,Type.Psychic,Type.Ice,Type.Dragon,Type.Dark,Type.Fairy};
@@ -68,11 +67,6 @@ namespace Project.Models{
                     return rarities[i];
             return Rarity.Unknown;
      }
-
-     public Move getMove(string name)
-        {
-            return Move.tackle;
-        }
     public Type getType(string type) {
             for (int i = 0; i < types.Length-1; i++) {
                 if (Enum.GetName(typeof(Type), i) == type)
@@ -90,10 +84,10 @@ namespace Project.Models{
             this.Image = obj.Image;
             this.type1 = getType(obj.Type_1);
             this.type2 = getType(obj.Type_2);
-            this.move1 = getMove(obj.Move1);
-            this.move2 = getMove(obj.Move2);
-            this.move3 = getMove(obj.Move3);
-            this.move4 = getMove(obj.Move4);
+            this.move1 = obj.Move1;
+            this.move2 = obj.Move2;
+            this.move3 = obj.Move3;
+            this.move4 = obj.Move4;
             this.description = obj.Description;
             this.weight = obj.Weight;
             this.height = obj.Height;

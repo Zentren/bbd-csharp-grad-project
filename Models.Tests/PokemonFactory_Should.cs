@@ -27,5 +27,11 @@ namespace Project.UnitTests.Models
             Assert.AreEqual(type,Type.Fighting);
 
         }
+        public void factoryGetTypeTestNull(){
+            PokemonFactory factory = new PokemonFactory();
+            Type type = factory.getType("john");
+            Assert.IsNull(type);
+
+        }
     }
 }

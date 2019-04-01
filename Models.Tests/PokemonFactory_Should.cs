@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Project.UnitTests.Models
 {
-    public class Pokemon_Should
+    public class PokemonFactory_Should
     {   DbRecord record = new DbRecord();
         Pokemon pokemon;
         [SetUp]

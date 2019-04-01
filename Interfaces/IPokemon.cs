@@ -1,4 +1,6 @@
-namespace Project.Models
+using Project.Models;
+
+namespace Project.interfaces
 {
     public interface IPokemon
     {

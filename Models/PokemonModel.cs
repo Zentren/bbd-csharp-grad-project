@@ -15,10 +15,8 @@ namespace Project.Models {
 
         public Pokemon GetPokemonByName(string name) {
             Pokemon obj = factory.GetPokemonByName(name);
-            string s = calc.getSuperEffectiveAgainst(obj.Type1, obj.Type2);
-            string w = calc.getTypesSuperEffectiveAgainst(obj.Type1, obj.Type2);
-            obj.setStrengths(s.Split(" "));
-            obj.setWeaknesses(s.Split(" "));
+            obj.Strengths = calc.getSuperEffectiveAgainst(obj.Type1, obj.Type2);
+            obj.Weaknesses = calc.getTypesSuperEffectiveAgainst(obj.Type1, obj.Type2);
             return factory.GetPokemonByName(name);
         }
 

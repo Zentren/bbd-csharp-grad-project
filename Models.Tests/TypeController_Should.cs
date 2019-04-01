@@ -2,7 +2,7 @@ using NUnit.Framework;
 
 namespace Project.UnitTests.Models
 {
-    public class Pokemon_Should
+    public class TypeController_Should
     {
         [SetUp]
         public void Setup()
@@ -14,5 +14,6 @@ namespace Project.UnitTests.Models
         {
             Assert.Pass();
         }
+        
     }
 }

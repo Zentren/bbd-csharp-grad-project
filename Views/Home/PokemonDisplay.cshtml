@@ -5,22 +5,23 @@
 @{
   var pokemon = (Pokemon)ViewData["pokemon"];
 }
+<center>
+  <div class="text-center">
+    <h1 class="display-4">@pokemon.Name</h1>
+    <div class="display-4"><img src = @pokemon.Image></div>
 
-<div class="text-center">
-  <h1 class="display-3">HERE</h1>
-  <h1 class="display-4"><img src = @pokemon.Image></h1>
-  <h1 class="display-4">@pokemon.Name</h1>
-  <h1 class="display-4">@pokemon.Number</h1>
-  <h1 class="display-4">@pokemon.Description</h1>
-  <h1 class="display-4">@pokemon.RarityOf</h1>
-  <h1 class="display-4">@pokemon.Type1</h1>
-  <h1 class="display-4">@pokemon.Type2</h1>
-  <h1 class="display-4">@pokemon.PreEvolution</h1>
-  <h1 class="display-4">@pokemon.Evolution</h1>
-  <h1 class="display-4">@pokemon.Height</h1>
-  <h1 class="display-4">@pokemon.Weight</h1>
-  <h1 class="display-4">@pokemon.Move1</h1>
-  <h1 class="display-4">@pokemon.Move2</h1>
-  <h1 class="display-4">@pokemon.Move3</h1>
-  <h1 class="display-4">@pokemon.Move4</h1>
-</div>
+    <div class="display-4">@pokemon.Number</div>
+    <div class="display-4">@pokemon.Description</div>
+    <div class="display-4">@pokemon.RarityOf</div>
+    <div class="display-4">@pokemon.Type1</div>
+    <div class="display-4">@pokemon.Type2</div>
+    <div class="display-4">@pokemon.PreEvolution</div>
+    <div class="display-4">@pokemon.Evolution</div>
+    <div class="display-4">@pokemon.Height</div>
+    <div class="display-4">@pokemon.Weight</div>
+    <div class="display-4">@pokemon.Move1</div>
+    <div class="display-4">@pokemon.Move2</div>
+    <div class="display-4">@pokemon.Move3</div>
+    <div class="display-4">@pokemon.Move4</div>
+  </div>
+</center>

@@ -27,10 +27,26 @@ namespace Project.UnitTests.Models
             Assert.AreEqual(type,Type.Fighting);
 
         }
+        [Test]
         public void factoryGetTypeTestNull(){
             PokemonFactory factory = new PokemonFactory();
             Type type = factory.getType("john");
             Assert.IsNull(type);
+
+        }
+        
+        [Test]
+        public void factoryGetRarityTest(){
+            PokemonFactory factory = new PokemonFactory();
+            Rarity rarity = factory.getRarity("Common");
+            Assert.AreEqual(rarity,Rarity.Common);
+
+        }
+        [Test]
+        public void factoryGetRarityTestNull(){
+            PokemonFactory factory = new PokemonFactory();
+            Rarity rarity = factory.getRarity("john");
+            Assert.IsNull(rarity);
 
         }
     }

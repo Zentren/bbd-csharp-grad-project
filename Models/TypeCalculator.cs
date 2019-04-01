@@ -162,7 +162,8 @@ namespace Project.Models
                         sb.Append(" ");
                     }
                 }
-                return sb.ToString();
+                var check = Shorten(sb.ToString());
+                return check;
             }
 
             public String getTypesSuperEffectiveAgainst(Type Type1, Type Type2)
@@ -178,7 +179,8 @@ namespace Project.Models
                         sb.Append(" ");
                     }
                 }
-                return sb.ToString();
+                var check = Shorten(sb.ToString());
+                return check;
             }
 
             /*
@@ -199,7 +201,8 @@ namespace Project.Models
                         sb.Append(" ");
                     }
                 }
-                return sb.ToString();
+                var check = Shorten(sb.ToString());
+                return check;
             }
 
             public String getNotVeryEffectiveAgainst(Type Type1, Type Type2)
@@ -215,7 +218,8 @@ namespace Project.Models
                         sb.Append(" ");
                     }
                 }
-                return sb.ToString();
+                var check = Shorten(sb.ToString());
+                return check;
             }
 
             /*
@@ -235,7 +239,8 @@ namespace Project.Models
                         sb.Append(" ");
                     }
                 }
-                return sb.ToString();
+                var check = Shorten(sb.ToString());
+                return check;
             }
 
             public String getTypesNotVeryEffectiveAgainst(Type Type1, Type Type2)
@@ -249,7 +254,8 @@ namespace Project.Models
                         sb.Append(" ");
                     }
                 }
-                return sb.ToString();
+                var check = Shorten(sb.ToString());
+                return check;
             }
 
             /*
@@ -265,7 +271,10 @@ namespace Project.Models
                 {
                     if (Effectiveness[Type1][i] == 0)
                         sb.Append(((Type)i).ToString());
+                        sb.Append(" ");
                 }
+                // var check = Shorten(sb.ToString());
+                // return check;
                 return sb.ToString();
             }
 
@@ -278,8 +287,10 @@ namespace Project.Models
                 {
                     if (CombinedEffectiveness[i] == 0)
                         sb.Append(((Type)i).ToString());
+                        sb.Append(" ");
                 }
-                return sb.ToString();
+                var check = Shorten(sb.ToString());
+                return check;
             }
 
             /*
@@ -299,7 +310,8 @@ namespace Project.Models
                         sb.Append(" ");
                     }
                 }
-                return sb.ToString();
+                var check = Shorten(sb.ToString());
+                return check;
             }
 
             public String getImmuneTo(Type Type1, Type Type2)
@@ -313,7 +325,8 @@ namespace Project.Models
                         sb.Append(" ");
                     }
                 }
-                return sb.ToString();
+                var check = Shorten(sb.ToString());
+                return check;
             }
 
             /*

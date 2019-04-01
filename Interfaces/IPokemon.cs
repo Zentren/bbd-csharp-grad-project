@@ -18,11 +18,11 @@ namespace Project.Models
         double Height { get; }
         uint Level { get; }
         uint Hp { get; }
-        string Pre_Evolution{ get; }
+        string PreEvolution{ get; }
         string Evolution{ get; }
-        Pokemon.Rarity RarityOf { get; }
+        Rarity RarityOf { get; }
         string Image { get;}
-        Type[] Weaknesses{ get;}
-        Type[] Strengths{ get;}
+        // Type[] Weaknesses{ get;}
+        // Type[] Strengths{ get;}
     }
 }

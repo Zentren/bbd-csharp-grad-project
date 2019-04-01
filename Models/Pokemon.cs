@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 namespace Project.Models{
     public class Pokemon{
 
-        IFirebaseConfig config = new FirebaseConfig { AuthSecret = "zqEswzoN5eplAQUWJC3GNDxsmR7KMKlJNWdu53Rd", BasePath = "https://pokedex-a0400.firebaseio.com" };
-        IFirebaseClient client;
-        FirebaseResponse response = null;
+        //IFirebaseConfig config = new FirebaseConfig { AuthSecret = "zqEswzoN5eplAQUWJC3GNDxsmR7KMKlJNWdu53Rd", BasePath = "https://pokedex-a0400.firebaseio.com" };
+        //IFirebaseClient client;
+        //FirebaseResponse response = null;
 
         public enum Type
         {
@@ -58,31 +58,61 @@ namespace Project.Models{
      public string Image { get; private set; }
 
 
-    public async void Resp(string name) {
-            this.response=await client.GetTaskAsync("Information/" + name);
+    //public async void Resp(string name) {
+      //      this.response=await client.GetTaskAsync("Information/" + name);
+     //   }
+
+    public void setStrengths(List<Type> tmp)
+        {
+            this.strengths = tmp.ToArray();
         }
 
-    public double getIV(){
+        public void setWeakness(List<Type> tmp) {
+            this.weaknesses = tmp.ToArray();
+        }
+
+     public double getIV(){
         Random random = new Random();  
         int attack = random.Next(1, 15); 
         int defense = random.Next(1, 15); 
         return((Convert.ToInt32(this.hp)+attack+defense)/45);
-    }
+     }
 
-    public Rarity getRarity(string rarity) {
+     public Rarity getRarity(string rarity) {
             for (int i = 0; i < rarities.Length - 1; i++)
                 if (Enum.GetName(typeof(Rarity), i) == rarity)
                     return rarities[i];
             return Rarity.Unknown;
      }
-    public Type getType(string type) {
+     public Type getType(string type) {
             for (int i = 0; i < types.Length-1; i++) {
                 if (Enum.GetName(typeof(Type), i) == type)
                     return types[i];
             }
             return Type.Null;
         }
-    public Pokemon(string name)
+
+      public Pokemon(Data obj) {
+            this.name = obj.Name;
+            this.number = obj.Number;
+            this.Image = obj.Image;
+            this.type1 = getType(obj.Type_1);
+            this.type2 = getType(obj.Type_2);
+            this.move1 = obj.Move1;
+            this.move2 = obj.Move2;
+            this.move3 = obj.Move3;
+            this.move4 = obj.Move4;
+            this.description = obj.Description;
+            this.weight = obj.Weight;
+            this.height = obj.Height;
+            this.level = obj.Level;
+            this.hp = obj.HP;
+            this.Pre_Evolution = obj.Pre_Evolution;
+            this.Evolution = obj.Evolution;
+            this.rarity = getRarity(obj.Status);
+        }
+
+   /* public Pokemon(string name)
         {
             client = new FireSharp.FirebaseClient(config);
             Resp(name);
@@ -105,7 +135,7 @@ namespace Project.Models{
             this.Evolution = obj.Evolution;
             this.rarity = getRarity(obj.Status);
             //strengthsAndWeaknesses();
-    }
+    }*/
 
     // public infoToSpeech(){
     //     SpeechSynthesizer synthesizer = new SpeechSynthesizer();
@@ -121,12 +151,12 @@ namespace Project.Models{
     //         // Asynchronous
     //         synthesizer.SpeakAsync(this.description);
     // }
-    public Pokemon evolve() {
-            return new Pokemon(this.Evolution);
+     public Pokemon evolve() {
+            return new Pokemon(Data Evo);
         }
 
-    public Pokemon devolve() {
-            return new Pokemon(this.Pre_Evolution);
+     public Pokemon devolve() {
+            return new Pokemon(Data Pre);
         }
 
     // public void strengthsAndWeaknesses() {

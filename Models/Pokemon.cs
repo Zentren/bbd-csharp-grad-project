@@ -18,7 +18,7 @@ namespace Project.Models{
         {
             Normal, Fighting, Flying, Poison, Ground, Rock, Bug, Ghost, Steel,
             Fire, Water, Grass, Electric, Psychic, Ice, Dragon, Dark, Fairy,
-            Unknown,Null
+            Null
         }
       public enum Rarity { Common, Uncommon, Rare,Unknown };
       public string number { get; private set; }
@@ -43,15 +43,15 @@ namespace Project.Models{
      private Rarity[] rarities = { Rarity.Common, Rarity.Rare, Rarity.Uncommon, Rarity.Unknown };
      private Type[] types= {Type.Normal,Type.Fighting,Type.Flying,Type.Poison,Type.Ground,Type.Rock,Type.Bug,Type.Ghost,
      Type.Steel,Type.Fire,Type.Water,Type.Grass,Type.Electric,Type.Psychic,Type.Ice,Type.Dragon,Type.Dark,Type.Fairy};
-     private double[,] battleChart=new double[,] {{1,1,1,1,1,0.5,1,0,0.5,1,1,1,1,1,1,1,1,1},{2,1,0.5,0.5,1,2,0.5,0,2,1,1,1,1,0.5,2,1,2,0.5},
-     {1,2,1,1,1,0.5,2,1,0.5,1,1,2,0.5,1,1,1,1,1},{1,1,1,0.5,0.5,0.5,1,0.5,0,1,1,2,1,1,1,1,1,2},
-     {1,1,0,2,1,2,0.5,1,2,2,1,0.5,2,1,1,1,1,1},{1,0.5,2,1,0.5,1,2,1,0.5,2,1,1,1,1,2,1,1,1},
-     {1,0.5,0.5,0.5,1,1,1,0.5,0.5,0.5,1,2,1,2,1,1,2,0.5},{0,1,1,1,1,1,1,2,1,1,1,1,1,2,1,1,0.5,1},
-     {1,1,1,1,1,2,1,1,0.5,0.5,0.5,1,0.5,1,2,1,1,2},{1,1,1,1,1,0.5,2,1,2,0.5,0.5,2,1,1,2,0.5,1,1},
-     {1,1,1,1,2,2,1,1,1,2,0.5,0.5,1,1,1,0.5,1,1},{1,1,0.5,0.5,2,2,0.5,1,0.5,0.5,2,0.5,1,1,1,0.5,1,1},
-     {1,1,2,1,0,1,1,1,1,1,2,0.5,0.5,1,1,0.5,1,1},{1,2,1,2,1,1,1,1,0.5,1,1,1,1,0.5,1,1,0,1},
-     {1,1,2,1,2,1,1,1,0.5,0.5,0.5,2,1,1,0.5,2,1,1},{1,1,1,1,1,1,1,1,0.5,1,1,1,1,1,1,2,1,0},
-     {1,0.5,1,1,1,1,1,2,1,1,1,1,1,2,1,1,0.5,0.5},{1,2,1,0.5,1,1,1,1,0.5,0.5,1,1,1,1,1,2,2,1}};
+    //  private double[,] battleChart=new double[,] {{1,1,1,1,1,0.5,1,0,0.5,1,1,1,1,1,1,1,1,1},{2,1,0.5,0.5,1,2,0.5,0,2,1,1,1,1,0.5,2,1,2,0.5},
+    //  {1,2,1,1,1,0.5,2,1,0.5,1,1,2,0.5,1,1,1,1,1},{1,1,1,0.5,0.5,0.5,1,0.5,0,1,1,2,1,1,1,1,1,2},
+    //  {1,1,0,2,1,2,0.5,1,2,2,1,0.5,2,1,1,1,1,1},{1,0.5,2,1,0.5,1,2,1,0.5,2,1,1,1,1,2,1,1,1},
+    //  {1,0.5,0.5,0.5,1,1,1,0.5,0.5,0.5,1,2,1,2,1,1,2,0.5},{0,1,1,1,1,1,1,2,1,1,1,1,1,2,1,1,0.5,1},
+    //  {1,1,1,1,1,2,1,1,0.5,0.5,0.5,1,0.5,1,2,1,1,2},{1,1,1,1,1,0.5,2,1,2,0.5,0.5,2,1,1,2,0.5,1,1},
+    //  {1,1,1,1,2,2,1,1,1,2,0.5,0.5,1,1,1,0.5,1,1},{1,1,0.5,0.5,2,2,0.5,1,0.5,0.5,2,0.5,1,1,1,0.5,1,1},
+    //  {1,1,2,1,0,1,1,1,1,1,2,0.5,0.5,1,1,0.5,1,1},{1,2,1,2,1,1,1,1,0.5,1,1,1,1,0.5,1,1,0,1},
+    //  {1,1,2,1,2,1,1,1,0.5,0.5,0.5,2,1,1,0.5,2,1,1},{1,1,1,1,1,1,1,1,0.5,1,1,1,1,1,1,2,1,0},
+    //  {1,0.5,1,1,1,1,1,2,1,1,1,1,1,2,1,1,0.5,0.5},{1,2,1,0.5,1,1,1,1,0.5,0.5,1,1,1,1,1,2,2,1}};
          
      public Type[] weaknesses{ get; private set; }
      public Type[] strengths{ get; private set; }
@@ -66,7 +66,7 @@ namespace Project.Models{
         Random random = new Random();  
         int attack = random.Next(1, 15); 
         int defense = random.Next(1, 15); 
-        return((this.hp+attack+defense)/45);
+        return((Convert.ToInt32(this.hp)+attack+defense)/45);
     }
 
     public Rarity getRarity(string rarity) {
@@ -100,11 +100,11 @@ namespace Project.Models{
             this.weight = obj.Weight;
             this.height = obj.Height;
             this.level = obj.Level;
-            //this.hp = obj.Hp;
+            this.hp = obj.HP;
             this.Pre_Evolution = obj.Pre_Evolution;
             this.Evolution = obj.Evolution;
             this.rarity = getRarity(obj.Status);
-            strengthsAndWeaknesses();
+            //strengthsAndWeaknesses();
     }
 
     // public infoToSpeech(){
@@ -129,55 +129,55 @@ namespace Project.Models{
             return new Pokemon(this.Pre_Evolution);
         }
 
-    public void strengthsAndWeaknesses() {
-            strengths = setStrengths();
-            List<Type> w=setWeaknesses();
-            if (type2 != Type.Null) {
-                int i = Array.IndexOf(types, type1);
-                int j = Array.IndexOf(types, type2);
-                for (int k = 0; k < w.ToArray().Length; k++) {
-                    int m = Array.IndexOf(types, w[k]);
-                    if (battleChart[m, i] < 2 || battleChart[m, j] < 2)
-                        w.RemoveAt(k);
-                }
-            }
-            weaknesses = w.ToArray();
+    // public void strengthsAndWeaknesses() {
+    //         strengths = setStrengths();
+    //         List<Type> w=setWeaknesses();
+    //         if (type2 != Type.Null) {
+    //             int i = Array.IndexOf(types, type1);
+    //             int j = Array.IndexOf(types, type2);
+    //             for (int k = 0; k < w.ToArray().Length; k++) {
+    //                 int m = Array.IndexOf(types, w[k]);
+    //                 if (battleChart[m, i] < 2 || battleChart[m, j] < 2)
+    //                     w.RemoveAt(k);
+    //             }
+    //         }
+    //         weaknesses = w.ToArray();
 
-    }
+    // }
 
-    public List<Type> setWeaknesses() {
-            List<Type> tmp = new List<Type>();
-            int i = Array.IndexOf(types, type1);
-            for (int j = 0; j < 18; j++)
-                if (battleChart[i, j]>1)
-                    tmp.Add(types[j]);
-            if (type2 != Type.Null)
-            {
-                i = Array.IndexOf(types, type2);
-                for (int j = 0; j < 18; j++)
-                    if (battleChart[i, j] > 1)
-                        tmp.Add(types[j]);
-            }
-           tmp = tmp.Distinct().ToList();
-           return tmp;
-     }
-        public Type[] setStrengths() {
-            List<Type> tmp = new List<Type>();
-            int i = Array.IndexOf(types, type1);
-            for (int j = 0; j < 18; j++)
-                if (battleChart[i, j] > 1)
-                    tmp.Add(types[j]);
+    // public List<Type> setWeaknesses() {
+    //         List<Type> tmp = new List<Type>();
+    //         int i = Array.IndexOf(types, type1);
+    //         for (int j = 0; j < 18; j++)
+    //             if (battleChart[i, j]>1)
+    //                 tmp.Add(types[j]);
+    //         if (type2 != Type.Null)
+    //         {
+    //             i = Array.IndexOf(types, type2);
+    //             for (int j = 0; j < 18; j++)
+    //                 if (battleChart[i, j] > 1)
+    //                     tmp.Add(types[j]);
+    //         }
+    //        tmp = tmp.Distinct().ToList();
+    //        return tmp;
+    //  }
+    //     public Type[] setStrengths() {
+    //         List<Type> tmp = new List<Type>();
+    //         int i = Array.IndexOf(types, type1);
+    //         for (int j = 0; j < 18; j++)
+    //             if (battleChart[i, j] > 1)
+    //                 tmp.Add(types[j]);
 
-            if (type2 != Type.Null)
-            {
-                i = Array.IndexOf(types, type2);
-                for (int j = 0; j < 18; j++)
-                    if (battleChart[i, j] > 1)
-                        tmp.Add(types[j]);
-            }
-            tmp = tmp.Distinct().ToList();
-            return tmp.ToArray();
-     }
+    //         if (type2 != Type.Null)
+    //         {
+    //             i = Array.IndexOf(types, type2);
+    //             for (int j = 0; j < 18; j++)
+    //                 if (battleChart[i, j] > 1)
+    //                     tmp.Add(types[j]);
+    //         }
+    //         tmp = tmp.Distinct().ToList();
+    //         return tmp.ToArray();
+    //  }
 
     }
 

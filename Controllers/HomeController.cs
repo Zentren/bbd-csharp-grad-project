@@ -10,6 +10,7 @@ namespace Project.Controllers
 {
   public class HomeController : Controller
   {
+    PokemonModel pokemonModel = new PokemonModel();
     public IActionResult NameSearch()
     {
       return View();
@@ -27,11 +28,9 @@ namespace Project.Controllers
 
     public IActionResult PokemonDisplay(String name = null, String number = null)
     {
-      if (name != null){
-        ViewBag.Message = name;//Request["txtName"].ToString();
-      } else {
-        ViewBag.Message = number;
-      }
+      Pokemon poke = pokemonModel.GetPokemonByName(name);
+
+      ViewData["pokemon"] = poke;
       
       return View();
     }

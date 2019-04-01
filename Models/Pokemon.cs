@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace Project.Models{
     public class Pokemon : IPokemon {
-        public uint Number { get; private set; }
+        public string Number { get; private set; }
         public string Name { get; private set; }
         public Type Type1 { get; private set; }
         public Type Type2 { get; private set; } = Type.Null;
         public string Description {get; private set;}
-        public double Weight {get;private set;}
-        public double Height {get;private set;}
+        public string Weight {get;private set;}
+        public string Height {get;private set;}
         public uint Level { get; private set; }
         public uint Hp { get; private set; }
         public string PreEvolution { get; private set; }
@@ -24,14 +24,13 @@ namespace Project.Models{
         public string Move2{get;private set;}
         public string Move3{get;private set;}
         public string Move4{get;private set;}   
-        public Type[] Weaknesses{ get; private set; }
-        public Type[] Strengths{ get; private set; }
+      
         public string Image { get; private set; }
         public double IV { get; private set; }
         
     public Pokemon
-    ( uint number, string name, Type type1, Type type2, string description, double weight,
-        double height, uint level, uint hp, string preEvolution, string evolution, Rarity rarityOf,
+    ( string number, string name, Type type1, Type type2, string description, string weight,
+        string height, uint level, uint hp, string preEvolution, string evolution, Rarity rarityOf,
         string move1, string move2, string move3, string move4, string image )
       {
             this.Number = number;

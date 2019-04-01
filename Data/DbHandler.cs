@@ -2,6 +2,8 @@ using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
 
+using System;
+
 namespace Project.Data
 {
     public class DbHandler 
@@ -11,7 +13,7 @@ namespace Project.Data
         FirebaseResponse response;
 
         public DbHandler() {
-            config = new FirebaseConfig { AuthSecret = "zqEswzoN5eplAQUWJC3GNDxsmR7KMKlJNWdu53Rd", BasePath = "https://pokedex-a0400.firebaseio.com" };
+            config = new FirebaseConfig { AuthSecret = "1wRJbNnc41nM318fYOCLCudiOzL4cLS6pFcSTxMN", BasePath = "https://pokemondatabase-4e361.firebaseio.com/" };
             client = new FireSharp.FirebaseClient(config);
             response = null;
         }
@@ -25,7 +27,9 @@ namespace Project.Data
 
         public DbRecord GetRecordByName(string name) {
             QueryByName(name);
+            while (response == null){}
             DbRecord record = response.ResultAs<DbRecord>();
+            Console.WriteLine(record.Name);
             return record;
         }
     }

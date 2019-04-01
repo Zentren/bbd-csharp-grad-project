@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Project.interfaces;
 using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
@@ -24,8 +25,8 @@ namespace Project.Models{
         public string Move2{get;private set;}
         public string Move3{get;private set;}
         public string Move4{get;private set;}   
-        public Type[] Weaknesses{ get; private set; }
-        public Type[] Strengths{ get; private set; }
+        public string Weaknesses{ get; set; }
+        public string Strengths{ get; set; }
         public string Image { get; private set; }
         public double IV { get; private set; }
         
@@ -61,18 +62,18 @@ namespace Project.Models{
         return((Convert.ToInt32(this.Hp)+attack+defense)/45);
      }
 
-        public void setStrengths(string[] str) {
-            this.Strengths = new Type[str.Length];
-            for (int i = 0; i < str.Length; i++)
-                this.Strengths[i] = (Type)Enum.Parse(typeof(Type), str[i], true);
-        }
+        // public void setStrengths(string[] str) {
+        //     this.Strengths = new Type[str.Length];
+        //     for (int i = 0; i < str.Length; i++)
+        //         this.Strengths[i] = (Type)Enum.Parse(typeof(Type), str[i], true);
+        // }
 
-        public void setWeaknesses(string[] str)
-        {
-            this.Weaknesses = new Type[str.Length];
-            for (int i = 0; i < str.Length; i++)
-                this.Weaknesses[i] = (Type)Enum.Parse(typeof(Type), str[i], true);
-        }
+        // public void setWeaknesses(string[] str)
+        // {
+        //     this.Weaknesses = new Type[str.Length];
+        //     for (int i = 0; i < str.Length; i++)
+        //         this.Weaknesses[i] = (Type)Enum.Parse(typeof(Type), str[i], true);
+        // }
 
         // public infoToSpeech(){
         //     SpeechSynthesizer synthesizer = new SpeechSynthesizer();

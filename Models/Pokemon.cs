@@ -66,8 +66,9 @@ namespace Project.Models{
     public double getIV(){
         Random random = new Random();  
         int attack = random.Next(1, 15); 
+        int hp = random.Next(1, 15); 
         int defense = random.Next(1, 15); 
-        return((this.hp+attack+defense)/45);
+        return((hp+attack+defense)/45);
     }
 
     public Rarity getRarity(string rarity) {

@@ -24,7 +24,9 @@ namespace Project.Models{
         public string Move2{get;private set;}
         public string Move3{get;private set;}
         public string Move4{get;private set;}   
+      
         public string Image { get; private set; }
+        public double IV { get; private set; }
         
     public Pokemon
     ( string number, string name, Type type1, Type type2, string description, string weight,
@@ -48,6 +50,7 @@ namespace Project.Models{
             this.Move3 = move3;
             this.Move4 = move4;
             this.Image = image;
+            this.IV = getIV();
       }
 
      public double getIV(){
@@ -57,28 +60,41 @@ namespace Project.Models{
         return((Convert.ToInt32(this.Hp)+attack+defense)/45);
      }
 
-    // public infoToSpeech(){
-    //     SpeechSynthesizer synthesizer = new SpeechSynthesizer();
-    //         synthesizer.Volume = 100;  // 0...100
-    //         synthesizer.Rate = -2;     // -10...10
+        public void setStrengths(string[] str) {
+            this.Strengths = new Type[str.Length];
+            for (int i = 0; i < str.Length; i++)
+                this.Strengths[i] = (Type)Enum.Parse(typeof(Type), str[i], true);
+        }
 
-    //         // Synchronous
-    //         synthesizer.Speak(this.name);
-            
-    //         synthesizer.Speak("Pokedex number "+this.number.ToString());
+        public void setWeaknesses(string[] str)
+        {
+            this.Weaknesses = new Type[str.Length];
+            for (int i = 0; i < str.Length; i++)
+                this.Weaknesses[i] = (Type)Enum.Parse(typeof(Type), str[i], true);
+        }
 
-    //         synthesizer.Speak("Type "+this.type);
-    //         // Asynchronous
-    //         synthesizer.SpeakAsync(this.description);
-    // }
+        // public infoToSpeech(){
+        //     SpeechSynthesizer synthesizer = new SpeechSynthesizer();
+        //         synthesizer.Volume = 100;  // 0...100
+        //         synthesizer.Rate = -2;     // -10...10
 
-    //  public Pokemon evolve() {
-    //         return new Pokemon(Data Evo);
-    //     }
+        //         // Synchronous
+        //         synthesizer.Speak(this.name);
 
-    //  public Pokemon devolve() {
-    //         return new Pokemon(Data Pre);
-    //     }
+        //         synthesizer.Speak("Pokedex number "+this.number.ToString());
+
+        //         synthesizer.Speak("Type "+this.type);
+        //         // Asynchronous
+        //         synthesizer.SpeakAsync(this.description);
+        // }
+
+        //  public Pokemon evolve() {
+        //         return new Pokemon(Data Evo);
+        //     }
+
+        //  public Pokemon devolve() {
+        //         return new Pokemon(Data Pre);
+        //     }
 
     }
 

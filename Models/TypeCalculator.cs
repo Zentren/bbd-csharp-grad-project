@@ -53,12 +53,12 @@ using System.Text;
 
 namespace Project.Models
 {
-    public class TypeController
+    public class TypeCalculator
         {
             /* 
                 Class Constructor
             */
-            public TypeController()
+            public TypeCalculator()
             {
                 Populate();
             }
@@ -116,6 +116,8 @@ namespace Project.Models
 
             public String getSuperEffectiveAgainst(Type Type1, Type Type2)
             {
+            if (Type2 == Type.Null)
+                return getSuperEffectiveAgainst(Type1);
                 StringBuilder sb = new StringBuilder();
                 float[] CombinedEffectiveness = CombineEffectiveness(Type1, Type2);
 
@@ -152,6 +154,8 @@ namespace Project.Models
 
             public String getTypesSuperEffectiveAgainst(Type Type1, Type Type2)
             {
+            if (Type2 == Type.Null)
+                return getTypesSuperEffectiveAgainst(Type1);
                 StringBuilder sb = new StringBuilder();
                 for (int i = 0; i < 18; i++)
                 {

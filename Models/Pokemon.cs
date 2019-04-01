@@ -43,20 +43,21 @@ namespace Project.Models{
      public Type[] Weaknesses{ get; private set; }
      public Type[] Strengths{ get; private set; }
      public string Image { get; private set; }
+    public double IV { get; private set; }
 
 
     //public async void Resp(string name) {
       //      this.response=await client.GetTaskAsync("Information/" + name);
      //   }
 
-    public void setStrengths(List<Type> tmp)
-        {
+    /*public void setStrengths(List<Type> tmp)
+       {
             this.Strengths = tmp.ToArray();
         }
 
         public void setWeakness(List<Type> tmp) {
             this.Weaknesses = tmp.ToArray();
-        }
+        }*/
 
      public double getIV(){
         Random random = new Random();  
@@ -100,106 +101,118 @@ namespace Project.Models{
             this.Pre_Evolution = obj.Pre_Evolution;
             this.Evolution = obj.Evolution;
             this.RarityOf = getRarity(obj.Status);
+            this.IV = getIV();
         }
 
-   /* public Pokemon(string name)
+        public void setStrengths(string[] str) {
+            this.Strengths = new Type[str.Length];
+            for(int i=0;i<str.Length;i++)
+                this.Strengths[i]= (Type)Enum.Parse(typeof(Type), str[i], true);
+
+        }
+
+        public void setWeaknesses(string[] str)
         {
-            client = new FireSharp.FirebaseClient(config);
-            Resp(name);
-            Data obj = response.ResultAs<Data>();
-            this.name = obj.Name;
-            this.number = obj.Number;
-            this.Image = obj.Image;
-            this.type1 = getType(obj.Type_1);
-            this.type2 = getType(obj.Type_2);
-            this.move1 = obj.Move1;
-            this.move2 = obj.Move2;
-            this.move3 = obj.Move3;
-            this.move4 = obj.Move4;
-            this.description = obj.Description;
-            this.weight = obj.Weight;
-            this.height = obj.Height;
-            this.level = obj.Level;
-            this.hp = obj.HP;
-            this.Pre_Evolution = obj.Pre_Evolution;
-            this.Evolution = obj.Evolution;
-            this.rarity = getRarity(obj.Status);
-            //strengthsAndWeaknesses();
-    }*/
+            this.Weaknesses = new Type[str.Length];
+            for (int i = 0; i < str.Length; i++)
+                this.Weaknesses[i] = (Type)Enum.Parse(typeof(Type), str[i], true);
 
-    // public infoToSpeech(){
-    //     SpeechSynthesizer synthesizer = new SpeechSynthesizer();
-    //         synthesizer.Volume = 100;  // 0...100
-    //         synthesizer.Rate = -2;     // -10...10
+        }
+        /* public Pokemon(string name)
+             {
+                 client = new FireSharp.FirebaseClient(config);
+                 Resp(name);
+                 Data obj = response.ResultAs<Data>();
+                 this.name = obj.Name;
+                 this.number = obj.Number;
+                 this.Image = obj.Image;
+                 this.type1 = getType(obj.Type_1);
+                 this.type2 = getType(obj.Type_2);
+                 this.move1 = obj.Move1;
+                 this.move2 = obj.Move2;
+                 this.move3 = obj.Move3;
+                 this.move4 = obj.Move4;
+                 this.description = obj.Description;
+                 this.weight = obj.Weight;
+                 this.height = obj.Height;
+                 this.level = obj.Level;
+                 this.hp = obj.HP;
+                 this.Pre_Evolution = obj.Pre_Evolution;
+                 this.Evolution = obj.Evolution;
+                 this.rarity = getRarity(obj.Status);
+                 //strengthsAndWeaknesses();
+         }*/
 
-    //         // Synchronous
-    //         synthesizer.Speak(this.name);
-            
-    //         synthesizer.Speak("Pokedex number "+this.number.ToString());
+        // public infoToSpeech(){
+        //     SpeechSynthesizer synthesizer = new SpeechSynthesizer();
+        //         synthesizer.Volume = 100;  // 0...100
+        //         synthesizer.Rate = -2;     // -10...10
 
-    //         synthesizer.Speak("Type "+this.type);
-    //         // Asynchronous
-    //         synthesizer.SpeakAsync(this.description);
-    // }
+        //         // Synchronous
+        //         synthesizer.Speak(this.name);
 
-    //  public Pokemon evolve() {
-    //         return new Pokemon(Data Evo);
-    //     }
+        //         synthesizer.Speak("Pokedex number "+this.number.ToString());
 
-    //  public Pokemon devolve() {
-    //         return new Pokemon(Data Pre);
-    //     }
+        //         synthesizer.Speak("Type "+this.type);
+        //         // Asynchronous
+        //         synthesizer.SpeakAsync(this.description);
+        // }
 
-    // public void strengthsAndWeaknesses() {
-    //         strengths = setStrengths();
-    //         List<Type> w=setWeaknesses();
-    //         if (type2 != Type.Null) {
-    //             int i = Array.IndexOf(types, type1);
-    //             int j = Array.IndexOf(types, type2);
-    //             for (int k = 0; k < w.ToArray().Length; k++) {
-    //                 int m = Array.IndexOf(types, w[k]);
-    //                 if (battleChart[m, i] < 2 || battleChart[m, j] < 2)
-    //                     w.RemoveAt(k);
-    //             }
-    //         }
-    //         weaknesses = w.ToArray();
+        //  public Pokemon evolve() {
+        //         return new Pokemon(Data Evo);
+        //     }
 
-    // }
+        //  public Pokemon devolve() {
+        //         return new Pokemon(Data Pre);
+        //     }
 
-    // public List<Type> setWeaknesses() {
-    //         List<Type> tmp = new List<Type>();
-    //         int i = Array.IndexOf(types, type1);
-    //         for (int j = 0; j < 18; j++)
-    //             if (battleChart[i, j]>1)
-    //                 tmp.Add(types[j]);
-    //         if (type2 != Type.Null)
-    //         {
-    //             i = Array.IndexOf(types, type2);
-    //             for (int j = 0; j < 18; j++)
-    //                 if (battleChart[i, j] > 1)
-    //                     tmp.Add(types[j]);
-    //         }
-    //        tmp = tmp.Distinct().ToList();
-    //        return tmp;
-    //  }
-    //     public Type[] setStrengths() {
-    //         List<Type> tmp = new List<Type>();
-    //         int i = Array.IndexOf(types, type1);
-    //         for (int j = 0; j < 18; j++)
-    //             if (battleChart[i, j] > 1)
-    //                 tmp.Add(types[j]);
+        // public void strengthsAndWeaknesses() {
+        //         strengths = setStrengths();
+        //         List<Type> w=setWeaknesses();
+        //         if (type2 != Type.Null) {
+        //             int i = Array.IndexOf(types, type1);
+        //             int j = Array.IndexOf(types, type2);
+        //             for (int k = 0; k < w.ToArray().Length; k++) {
+        //                 int m = Array.IndexOf(types, w[k]);
+        //                 if (battleChart[m, i] < 2 || battleChart[m, j] < 2)
+        //                     w.RemoveAt(k);
+        //             }
+        //         }
+        //         weaknesses = w.ToArray();
 
-    //         if (type2 != Type.Null)
-    //         {
-    //             i = Array.IndexOf(types, type2);
-    //             for (int j = 0; j < 18; j++)
-    //                 if (battleChart[i, j] > 1)
-    //                     tmp.Add(types[j]);
-    //         }
-    //         tmp = tmp.Distinct().ToList();
-    //         return tmp.ToArray();
-    //  }
+        // }
 
+        // public List<Type> setWeaknesses() {
+        //         List<Type> tmp = new List<Type>();
+        //         int i = Array.IndexOf(types, type1);
+        //         for (int j = 0; j < 18; j++)
+        //             if (battleChart[i, j]>1)
+        //                 tmp.Add(types[j]);
+        //         if (type2 != Type.Null)
+        //         {
+        //             i = Array.IndexOf(types, type2);
+        //             for (int j = 0; j < 18; j++)
+        //                 if (battleChart[i, j] > 1)
+        //                     tmp.Add(types[j]);
+        //         }
+        //        tmp = tmp.Distinct().ToList();
+        //        return tmp;
+        //  }
+        //     public Type[] setStrengths() {
+        //         List<Type> tmp = new List<Type>();
+        //         int i = Array.IndexOf(types, type1);
+        //         for (int j = 0; j < 18; j++)
+        //             if (battleChart[i, j] > 1)
+        //                 tmp.Add(types[j]);
+
+        //         if (type2 != Type.Null)
+        //         {
+        //             i = Array.IndexOf(types, type2);
+        //             for (int j = 0; j < 18; j++)
+        //                 if (battleChart[i, j] > 1)
+        //                     tmp.Add(types[j]);
+        //         }
+   
     }
 
 }

@@ -33,7 +33,7 @@ namespace Project.Data
                 Console.WriteLine(record.Name);
                 return record;
             } catch (NullReferenceException e) {
-                throw new PokemonRecordNotFoundException("Yay");
+                throw new PokemonRecordNotFoundException("Pokemon does not exist");
             }
         }
     }

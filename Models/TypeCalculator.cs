@@ -1,52 +1,3 @@
-/* 
-    --POKEMON TYPE CLASS--
-
-    Functions::
-        For given single types and dual types:
-            List types it is super effective against
-            List types super effective against it
-            List types it is not very effective against
-            List types not very effectuve against it
-            List types it is immune to 
-            List types immune to it
-
-        Calculate Effeciveness modifier between:
-            Two single types
-            A single type against a dual type
-        (less usefull, as these modifiers would only be used in an attack which can only be of a single type:)
-            Dual type against a single type
-            Dual type against a dual type
-
-        Combine Effectiveness of two different types to create a new list of the combined effectiveness ratings
-
-    Example Usage::
-        Console.WriteLine("Meet Blaziken!");
-        Type Type1 = Type.Fire;
-        Type Type2 = Type.Fighting;
-        Console.WriteLine($"Type: {Type1} and {Type2} pokemon \n");
-        Console.WriteLine("Super effective against: " + TypeController.getSuperEffectiveAgainst(Type1, Type2));
-        Console.WriteLine("Not very effective against: " + TypeController.getNotVeryEffectiveAgainst(Type1, Type2));
-        Console.WriteLine("Types immune to it: " + TypeController.getTypesImmuneToIt(Type1, Type2));
-        Console.WriteLine("Types super effective against it: " + TypeController.getTypesSuperEffectiveAgainst(Type1, Type2));
-        Console.WriteLine("Types not very effective against it: " + TypeController.getTypesNotVeryEffectiveAgainst(Type1, Type2));
-        Console.WriteLine("Types it is immune to : " + TypeController.getImmuneTo(Type1, Type2));
-
-        Console.WriteLine("\nMeet Pidgy!");
-        Type Type3 = Type.Ghost;
-        Console.WriteLine($"Type: {Type3} pokemon \n");
-        Console.WriteLine("Super effective against: " + TypeController.getSuperEffectiveAgainst(Type3));
-        Console.WriteLine("Not very effective against: " + TypeController.getNotVeryEffectiveAgainst(Type3));
-        Console.WriteLine("Types immune to it: " + TypeController.getTypesImmuneToIt(Type3));
-        Console.WriteLine("Types super effective against it: " + TypeController.getTypesSuperEffectiveAgainst(Type3));
-        Console.WriteLine("Types not very effective against it: " + TypeController.getTypesNotVeryEffectiveAgainst(Type3));
-        Console.WriteLine("Types it is immune to : " + TypeController.getImmuneTo(Type3));
-
-        Console.WriteLine("\nType Multipliers!");
-        Console.WriteLine(Type.Ghost + " type attacks " + Type.Fighting + " type with a x" + TypeController.getEffectivenessAgainst(Type.Ghost, Type.Fighting));
-        Console.WriteLine(Type.Ghost + " type attacks " + Type.Normal + " type with a x" + TypeController.getEffectivenessAgainst(Type.Ghost, Type.Normal));
-        Console.WriteLine(Type.Fighting  + " type attacks " + Type.Normal + " and "+ Type.Ghost + " type with a x" + TypeController.getEffectivenessAgainstDualType(Type.Fighting, Type.Steel, Type.Normal));
-        
-*/
 using System.Collections.Generic;
 using System;
 using System.Text;
@@ -255,6 +206,7 @@ namespace Project.Models
                 {
                     if (Effectiveness[Type1][i] == 0)
                         sb.Append(((Type)i).ToString());
+                        sb.Append(" ");
                 }
                 return sb.ToString();
             }
@@ -268,6 +220,7 @@ namespace Project.Models
                 {
                     if (CombinedEffectiveness[i] == 0)
                         sb.Append(((Type)i).ToString());
+                        sb.Append(" ");
                 }
                 return sb.ToString();
             }

@@ -29,9 +29,12 @@ namespace Project.Controllers
     public IActionResult PokemonDisplay(String name = null, String number = null)
     {
       Pokemon poke = pokemonModel.GetPokemonByName(name);
-
+       
       ViewData["pokemon"] = poke;
-      
+
+      //Use this method to get the string array? And then ship these values off to the view 
+      string[] effectiveness = pokemonModel.GetPokemonEffectiveness();
+
       return View();
     }
 

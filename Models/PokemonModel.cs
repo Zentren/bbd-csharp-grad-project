@@ -5,12 +5,13 @@ using Project.Data;
 
 namespace Project.Models {
     public class PokemonModel {
-        TypeCalculator calc = new TypeCalculator();
-        PokemonFactory factory = new PokemonFactory();
+        TypeCalculator calc;
+        PokemonFactory factory;
         // Pokemon pokemon;
 
         public PokemonModel() {
-            // pokemon = null;
+            calc = new TypeCalculator();
+            factory = new PokemonFactory();
         }
 
         public Pokemon GetPokemonByName(string name) {

@@ -2,21 +2,25 @@
     ViewData["Title"] = "Result";
 }
 
+@{
+  var pokemon = (Pokemon)ViewData["pokemon"];
+}
+
 <div class="text-center">
   <h1 class="display-3">HERE</h1>
-  <h1 class="display-4"><img src = @ViewBag.Message.Image></h1>
-  <h1 class="display-4">@ViewBag.Message.name</h1>
-  <h1 class="display-4">@ViewBag.Message.Number</h1>
-  <h1 class="display-4">@ViewBag.Message.Description</h1>
-  <h1 class="display-4">@ViewBag.Message.Status</h1>
-  <h1 class="display-4">@ViewBag.Message.Type_1</h1>
-  <h1 class="display-4">@ViewBag.Message.Type_2</h1>
-  <h1 class="display-4">@ViewBag.Message.Pre_Evolution</h1>
-  <h1 class="display-4">@ViewBag.Message.Evolution</h1>
-  <h1 class="display-4">@ViewBag.Message.Height</h1>
-  <h1 class="display-4">@ViewBag.Message.Weight</h1>
-  <h1 class="display-4">@ViewBag.Message.Move_1</h1>
-  <h1 class="display-4">@ViewBag.Message.Move_2</h1>
-  <h1 class="display-4">@ViewBag.Message.Move_3</h1>
-  <h1 class="display-4">@ViewBag.Message.Move_4</h1>
+  <h1 class="display-4"><img src = @pokemon.Image></h1>
+  <h1 class="display-4">@pokemon.Name</h1>
+  <h1 class="display-4">@pokemon.Number</h1>
+  <h1 class="display-4">@pokemon.Description</h1>
+  <h1 class="display-4">@pokemon.RarityOf</h1>
+  <h1 class="display-4">@pokemon.Type1</h1>
+  <h1 class="display-4">@pokemon.Type2</h1>
+  <h1 class="display-4">@pokemon.PreEvolution</h1>
+  <h1 class="display-4">@pokemon.Evolution</h1>
+  <h1 class="display-4">@pokemon.Height</h1>
+  <h1 class="display-4">@pokemon.Weight</h1>
+  <h1 class="display-4">@pokemon.Move1</h1>
+  <h1 class="display-4">@pokemon.Move2</h1>
+  <h1 class="display-4">@pokemon.Move3</h1>
+  <h1 class="display-4">@pokemon.Move4</h1>
 </div>

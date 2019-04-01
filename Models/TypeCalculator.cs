@@ -66,13 +66,16 @@ namespace Project.Models
             /* 
                 Dictionary of Pokemon Type Effectiveness
             */
-            public static Dictionary<Type, float[]> Effectiveness = new Dictionary<Type, float[]>();
+            public static Dictionary<Type, float[]> Effectiveness = null;
 
             /* 
                 Populate Pokemon Type Effectiveness Dictionary
             */
             private static void Populate()
             {
+                if (Effectiveness != null) return;
+                
+                Effectiveness = new Dictionary<Type, float[]>();
                 Effectiveness.Add(Type.Normal, new float[] { 1, 1, 1, 1, 1, 0.5F, 1, 0, 0.5F, 1, 1, 1, 1, 1, 1, 1, 1, 1 });
                 Effectiveness.Add(Type.Fighting, new float[] { 2, 1, 0.5F, 0.5F, 1, 2, 0.5F, 0, 2, 1, 1, 1, 1, 0.5F, 2, 1, 2, 0.5F });
                 Effectiveness.Add(Type.Flying, new float[] { 1, 2, 1, 1, 1, 0.5F, 2, 1, 0.5F, 1, 1, 2, 0.5F, 1, 1, 1, 1, 1 });

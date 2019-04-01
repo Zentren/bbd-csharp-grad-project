@@ -1,6 +1,6 @@
 namespace Project.Data
 {
-    public struct DbRecord
+    public class DbRecord
     {
         public string Name { get; set; }
         public string Number { get; set; }

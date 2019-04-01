@@ -12,15 +12,15 @@ namespace Project.Data
 
         public Pokemon GetPokemonByName(string name) {
             DbRecord record = handler.GetRecordByName(name);
-            
+
             Pokemon pokemon = new Pokemon(
-                Convert.ToUInt32(record.Number), 
+                record.Number, 
                 record.Name, 
                 getType(record.Type_1), 
                 getType(record.Type_2), 
                 record.Description, 
-                Convert.ToUInt32(record.Weight),
-                Convert.ToDouble(record.Height),
+                record.Weight,
+                record.Height,
                 Convert.ToUInt32(record.Level), 
                 Convert.ToUInt32(record.HP), 
                 record.Pre_Evolution, 
@@ -48,7 +48,7 @@ namespace Project.Data
                 return Type.Null;
 
             return (Type) Enum.Parse(typeof(Type), type, true);
-     }
+        }
 
 
     }

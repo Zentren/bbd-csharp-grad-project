@@ -40,16 +40,16 @@ namespace Project.UnitTests.Models
             Assert.AreEqual(data.Name,pokemon.Name);
             Assert.AreEqual(Convert.ToInt32(data.Number),pokemon.Number);
             Assert.AreEqual(data.Image,pokemon.Image);
-            Assert.AreEqual(data.Move1,pokemon.move1);
-            Assert.AreEqual(data.Move2,pokemon.move2);
-            Assert.AreEqual(data.Move3,pokemon.move3);
-            Assert.AreEqual(data.Move4,pokemon.move4);
+            Assert.AreEqual(data.Move1,pokemon.Move1);
+            Assert.AreEqual(data.Move2,pokemon.Move2);
+            Assert.AreEqual(data.Move3,pokemon.Move3);
+            Assert.AreEqual(data.Move4,pokemon.Move4);
             Assert.AreEqual(data.Description,pokemon.Description);
             Assert.AreEqual(Convert.ToInt32(data.Weight),pokemon.Weight);
             Assert.AreEqual(Convert.ToInt32(data.Height),pokemon.Height);
             Assert.AreEqual(Convert.ToInt32(data.Level),pokemon.Level);
             Assert.AreEqual(Convert.ToInt32(data.HP),pokemon.Hp);
-            Assert.AreEqual(data.Pre_Evolution,pokemon.Pre_Evolution);
+            Assert.AreEqual(data.Pre_Evolution,pokemon.PreEvolution);
             Assert.AreEqual(data.Evolution,pokemon.Evolution);
         }
     }

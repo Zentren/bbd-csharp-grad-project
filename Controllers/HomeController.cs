@@ -28,7 +28,7 @@ namespace Project.Controllers
 
     public IActionResult PokemonDisplay(String name = null, String number = null)
     {
-      Pokemon poke = pokemonModel.getPokemonByName(name);
+      Pokemon poke = pokemonModel.GetPokemonByName(name);
 
       ViewData["pokemon"] = poke;
       

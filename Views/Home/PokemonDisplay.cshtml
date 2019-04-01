@@ -2,21 +2,25 @@
     ViewData["Title"] = "Result";
 }
 
+@{
+  var pokemon = (Pokemon)ViewData["pokemon"];
+}
+
 <div class="text-center">
   <h1 class="display-3">HERE</h1>
-  <h1 class="display-4"><img src = @ViewBag.Message.Image></h1>
-  <h1 class="display-4">@ViewBag.Message.name</h1>
-  <h1 class="display-4">@ViewBag.Message.Number</h1>
-  <h1 class="display-4">@ViewBag.Message.Description</h1>
-  <h1 class="display-4">@ViewBag.Message.Status</h1>
-  <h1 class="display-4">@ViewBag.Message.Type_1</h1>
-  <h1 class="display-4">@ViewBag.Message.Type_2</h1>
-  <h1 class="display-4">@ViewBag.Message.Pre_Evolution</h1>
-  <h1 class="display-4">@ViewBag.Message.Evolution</h1>
-  <h1 class="display-4">@ViewBag.Message.Height</h1>
-  <h1 class="display-4">@ViewBag.Message.Weight</h1>
-  <h1 class="display-4">@ViewBag.Message.Move_1</h1>
-  <h1 class="display-4">@ViewBag.Message.Move_2</h1>
-  <h1 class="display-4">@ViewBag.Message.Move_3</h1>
-  <h1 class="display-4">@ViewBag.Message.Move_4</h1>
+  <h1 class="display-4"><img src = @pokemon.getImage></h1>
+  <h1 class="display-4">@pokemon.getName</h1>
+  <h1 class="display-4">@pokemon.getNumber</h1>
+  <h1 class="display-4">@pokemon.getDescription</h1>
+  <h1 class="display-4">@pokemon.getStatus</h1>
+  <h1 class="display-4">@pokemon.getType_1</h1>
+  <h1 class="display-4">@pokemon.getType_2</h1>
+  <h1 class="display-4">@pokemon.getPre_Evolution</h1>
+  <h1 class="display-4">@pokemon.getEvolution</h1>
+  <h1 class="display-4">@pokemon.getHeight</h1>
+  <h1 class="display-4">@pokemon.getWeight</h1>
+  <h1 class="display-4">@pokemon.getMove_1</h1>
+  <h1 class="display-4">@pokemon.getMove_2</h1>
+  <h1 class="display-4">@pokemon.getMove_3</h1>
+  <h1 class="display-4">@pokemon.getMove_4</h1>
 </div>

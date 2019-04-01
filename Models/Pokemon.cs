@@ -212,10 +212,7 @@ namespace Project.Models{
         //                 if (battleChart[i, j] > 1)
         //                     tmp.Add(types[j]);
         //         }
-        //         tmp = tmp.Distinct().ToList();
-        //         return tmp.ToArray();
-        //  }
-
+   
     }
 
 }

@@ -53,12 +53,12 @@ using System.Text;
 
 namespace Project.Models
 {
-    public class TypeController
+    public class TypeCalculator
         {
             /* 
                 Class Constructor
             */
-            public TypeController()
+            public TypeCalculator()
             {
                 Populate();
             }
@@ -108,12 +108,21 @@ namespace Project.Models
                     if (Effectiveness[Type1][i] == 2)
                     {
                         sb.Append(((Type)i).ToString());
+
                         sb.Append(" ");
                     }
                 }
-                return sb.ToString();
+                var check = Shorten(sb.ToString());
+                return check;
             }
+            public string Shorten(string sb)
+            {
 
+                int startIndex = 0;    
+                int endIndex = sb.ToString().Length - 1;    
+                string Reduced = sb.ToString().Substring(startIndex, endIndex);    
+               return Reduced;
+            }
             public String getSuperEffectiveAgainst(Type Type1, Type Type2)
             {
                 StringBuilder sb = new StringBuilder();

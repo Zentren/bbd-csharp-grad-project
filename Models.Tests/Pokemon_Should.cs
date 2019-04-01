@@ -1,4 +1,6 @@
 using NUnit.Framework;
+using Project.Models;
+
 
 namespace Project.UnitTests.Models
 {
@@ -14,5 +16,6 @@ namespace Project.UnitTests.Models
         {
             Assert.Pass();
         }
+        
     }
 }

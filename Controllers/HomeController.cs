@@ -15,7 +15,10 @@ namespace Project.Controllers
     {
       return View();
     }
-
+    public IActionResult DarkMode()
+    {
+      return View();
+    }
     public IActionResult NumberSearch()
     {
       return View();

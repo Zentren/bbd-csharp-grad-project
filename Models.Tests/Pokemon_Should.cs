@@ -6,20 +6,10 @@ using System.Collections.Generic;
 namespace Project.UnitTests.Models
 {
     public class Pokemon_Should
-    {
+    {   Data data = new Data();
         [SetUp]
         public void Setup()
         {
-        }
-
-        [Test]
-        public void stub()
-        {
-            Assert.Pass();
-        }
-        [Test]
-        public void pokemonConstructorTest()
-        {   Data data = new Data();
             data.Name = "Pikachu";
             data.Number = "25";
             data.Image = "image";
@@ -36,6 +26,16 @@ namespace Project.UnitTests.Models
             data.HP = "100";
             data.Pre_Evolution = "pichu";
             data.Evolution = "Raichu";
+        }
+
+        [Test]
+        public void stub()
+        {
+            Assert.Pass();
+        }
+        [Test]
+        public void pokemonConstructorTest()
+        { 
             Pokemon pokemon = new Pokemon(data);
             Assert.AreEqual(data.Name,pokemon.Name);
             Assert.AreEqual(Convert.ToInt32(data.Number),pokemon.Number);

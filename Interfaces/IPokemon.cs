@@ -11,15 +11,18 @@ namespace Project.Models
         // Get Pokemon basic info:
         uint Number { get; }
         string Name { get; }
-        Pokemon.Type PrimaryType { get; }
-        Pokemon.Type SecondaryType { get; }
+        Type Type1 { get; }
+        Type Type2 { get; }
         string Description { get; }
         double Weight { get; }
         double Height { get; }
         uint Level { get; }
         uint Hp { get; }
-        IPokemon EvolvesFrom { get; }
-        IPokemon EvolvesInto { get; }
+        string Pre_Evolution{ get; }
+        string Evolution{ get; }
         Pokemon.Rarity RarityOf { get; }
+        string Image { get;}
+        Type[] Weaknesses{ get;}
+        Type[] Strengths{ get;}
     }
 }

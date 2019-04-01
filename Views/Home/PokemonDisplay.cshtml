@@ -7,21 +7,36 @@
 }
 <center>
   <div class="text-center">
-    <h1 class="display-4">@pokemon.Name</h1>
-    <div class="display-4"><img src = @pokemon.Image></div>
 
-    <div class="display-4">@pokemon.Number</div>
-    <div class="display-4">@pokemon.Description</div>
-    <div class="display-4">@pokemon.RarityOf</div>
-    <div class="display-4">@pokemon.Type1</div>
-    <div class="display-4">@pokemon.Type2</div>
-    <div class="display-4">@pokemon.PreEvolution</div>
-    <div class="display-4">@pokemon.Evolution</div>
-    <div class="display-4">@pokemon.Height</div>
-    <div class="display-4">@pokemon.Weight</div>
-    <div class="display-4">@pokemon.Move1</div>
-    <div class="display-4">@pokemon.Move2</div>
-    <div class="display-4">@pokemon.Move3</div>
-    <div class="display-4">@pokemon.Move4</div>
+    <h1 class="display-4">(@pokemon.Number) @pokemon.Name</h1>
+    <div class="display-4"><img src = @pokemon.Image></div>
+    <div>
+      <strong>Description:</strong><div>@pokemon.Description</div>
+    </div>
+    <p></p>
+    <div>
+      <strong>Rarity:</strong><div>@pokemon.RarityOf</div>
+    </div>
+    <p></p>
+    <div>
+      <strong>Type(s):</strong><div>@pokemon.Type1  @pokemon.Type2 </div>
+    </div>
+    <p></p>
+    <div>
+      <strong>Evolution chain:</strong>
+      <div>
+        From: 
+        <a href=@("https://localhost:5001/Home/PokemonDisplay?name=" + @pokemon.PreEvolution??@pokemon.Name)>@(@pokemon.PreEvolution??"None")</a>  
+        To: 
+        <a href=@("https://localhost:5001/Home/PokemonDisplay?name=" + @pokemon.Evolution??@pokemon.Name)>@(@pokemon.Evolution??"None")</a>
+    </div>
+    <p></p>
+    <div>
+      <strong>Measurements:</strong><div>Height: @pokemon.Height  Weight: @pokemon.Weight</div>
+    </div>
+    <p></p>
+    <div>
+      <strong>Moves:</strong><div>@pokemon.Move1  @pokemon.Move2  @pokemon.Move3  @pokemon.Move4</div>
+    </div>
   </div>
 </center>

@@ -15,9 +15,10 @@ namespace Project.Models {
             pokemon = null;
         }
 
-        public Pokemon GetPokemonByName(string name) {
+        public Pokemon GetPokemonByName(String name) {
             try {
                 pokemon = factory.GetPokemonByName(name);
+                Console.WriteLine("HERE");
                 return pokemon;
             } catch (Exception e) {
                 throw e;

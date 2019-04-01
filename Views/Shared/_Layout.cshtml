@@ -18,17 +18,10 @@
 </head>
 <body>
   <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <a asp-area="" asp-controller="Home" asp-action="Home" class="navbar-brand">Pokedex Database</a>
-      </div>
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          <li><a asp-area="" asp-controller="Home" asp-action="NameSearch">Search by Name</a></li>
-          <li><a asp-area="" asp-controller="Home" asp-action="NumberSearch">Search by Number</a></li>
-        </ul>
-      </div>
-    </div>
+    <a asp-area="" asp-controller="Home" asp-action="HomePage" class="navbar-brand">
+      <img src = "https://images-na.ssl-images-amazon.com/images/I/41AP0SLv5BL._SX425_.jpg" style="width: 35px; height: 30px;">
+    </a> 
+    <a asp-area="" asp-controller="Home" asp-action="NameSearch">Search by Name</a>
   </nav>
   <partial name="_CookieConsentPartial" />
   

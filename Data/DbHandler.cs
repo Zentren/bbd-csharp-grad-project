@@ -28,9 +28,13 @@ namespace Project.Data
         public DbRecord GetRecordByName(string name) {
             QueryByName(name);
             while (response == null){}
-            DbRecord record = response.ResultAs<DbRecord>();
-            Console.WriteLine(record.Name);
-            return record;
+            try {
+                DbRecord record = response.ResultAs<DbRecord>();
+                Console.WriteLine(record.Name);
+                return record;
+            } catch (NullReferenceException e) {
+                throw new PokemonRecordNotFoundException("Yay");
+            }
         }
     }
 }

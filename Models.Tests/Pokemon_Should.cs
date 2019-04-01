@@ -32,13 +32,13 @@ namespace Project.UnitTests.Models
             PokemonFactory pokemonFactory = new PokemonFactory();
 
             pokemon = new Pokemon(
-                Convert.ToUInt32(record.Number), 
+                record.Number, 
                 record.Name, 
                 pokemonFactory.getType(record.Type_1), 
                 pokemonFactory.getType(record.Type_2), 
                 record.Description, 
-                Convert.ToUInt32(record.Weight),
-                Convert.ToDouble(record.Height),
+                record.Weight,
+                record.Height,
                 Convert.ToUInt32(record.Level), 
                 Convert.ToUInt32(record.HP), 
                 record.Pre_Evolution, 

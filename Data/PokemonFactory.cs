@@ -16,7 +16,7 @@ namespace Project.Data
             Pokemon pokemon = new Pokemon(
                 CheckNull(record.Number, "Number"), 
                 CheckNull(record.Name, "Name"), 
-                GetType(record.Type_1, true), 
+                GetType(record.Type_1,true), 
                 GetType(record.Type_2), 
                 CheckNull(record.Description, "Description"), 
                 CheckNull(record.Weight, "Weight"),
@@ -37,10 +37,11 @@ namespace Project.Data
         }
 
         private Rarity GetRarity(string rarity) {
-            if(string.IsNullOrEmpty(rarity))
+            try {
+                return (Rarity) Enum.Parse(typeof(Rarity), rarity, true);
+            } catch (ArgumentException e) {
                 return Rarity.Unknown;
-
-            return (Rarity) Enum.Parse(typeof(Rarity), rarity, true);
+            }
         }
 
         private Type GetType(string type, bool required=false) {

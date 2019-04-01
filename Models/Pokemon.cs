@@ -60,18 +60,18 @@ namespace Project.Models{
         return((Convert.ToInt32(this.Hp)+attack+defense)/45);
      }
 
-        public void setStrengths(string[] str) {
-            this.Strengths = new Type[str.Length];
-            for (int i = 0; i < str.Length; i++)
-                this.Strengths[i] = (Type)Enum.Parse(typeof(Type), str[i], true);
-        }
+        // public void setStrengths(string[] str) {
+        //     this.Strengths = new Type[str.Length];
+        //     for (int i = 0; i < str.Length; i++)
+        //         this.Strengths[i] = (Type)Enum.Parse(typeof(Type), str[i], true);
+        // }
 
-        public void setWeaknesses(string[] str)
-        {
-            this.Weaknesses = new Type[str.Length];
-            for (int i = 0; i < str.Length; i++)
-                this.Weaknesses[i] = (Type)Enum.Parse(typeof(Type), str[i], true);
-        }
+        // public void setWeaknesses(string[] str)
+        // {
+        //     this.Weaknesses = new Type[str.Length];
+        //     for (int i = 0; i < str.Length; i++)
+        //         this.Weaknesses[i] = (Type)Enum.Parse(typeof(Type), str[i], true);
+        // }
 
         // public infoToSpeech(){
         //     SpeechSynthesizer synthesizer = new SpeechSynthesizer();

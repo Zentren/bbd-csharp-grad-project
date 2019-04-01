@@ -1,6 +1,6 @@
 ﻿namespace Project.Models
 {
-    internal class Data
+    public class Data
     {
         public string Name { get; set; }
         public string Number { get; set; }

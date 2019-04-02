@@ -23,13 +23,13 @@ namespace Project.Data
                 CheckNull(record.Height, "Height"),
                 CheckNullInt(record.Level,"Level"), 
                 CheckNullInt(record.HP, "HP"), 
-                CheckNull(record.Pre_Evolution, "Pre-Evolution"), 
-                CheckNull(record.Evolution, "Evolution"), 
+                record.Pre_Evolution, 
+                record.Evolution, 
                 GetRarity(record.Status), 
                 CheckNull(record.Move1, "Move 1"), 
-                CheckNull(record.Move2, "Move 2"),
-                CheckNull(record.Move3, "Move 3"), 
-                CheckNull(record.Move4, "Move 4"), 
+                record.Move2,
+                record.Move3, 
+                record.Move4, 
                 CheckNull(record.Image, "Image")
             );    
 

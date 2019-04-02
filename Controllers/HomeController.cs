@@ -34,8 +34,9 @@ namespace Project.Controllers
       try {
 
         Pokemon poke = pokemonModel.GetPokemonByName(name);
-        string[] effectiveness = pokemonModel.GetPokemonEffectiveness();
         ViewData["pokemon"] = poke;
+
+        string[] effectiveness = pokemonModel.GetPokemonEffectiveness();
         ViewData["super"] = effectiveness[0];
         ViewData["weak"] = effectiveness[1];
         ViewData["immune"] = effectiveness[2];

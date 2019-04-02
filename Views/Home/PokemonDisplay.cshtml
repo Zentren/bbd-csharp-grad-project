@@ -6,8 +6,7 @@
   var pokemon = (Pokemon)ViewData["pokemon"];
 }
 <center>
-  <div class="text-center">
-
+  <div>
     <h1 class="display-4">(@pokemon.Number) @pokemon.Name</h1>
     <div class="display-4"><img src = @pokemon.Image></div>
     <div>
@@ -38,5 +37,20 @@
     <div>
       <strong>Moves:</strong><div>@pokemon.Move1  @pokemon.Move2  @pokemon.Move3  @pokemon.Move4</div>
     </div>
+    <p></p>
+    <div>
+      <strong>Strong Against:</strong><div>@ViewData["super"]</div>
+    </div>
+    <p></p>
+    <div>
+      <strong>Weak Against:</strong><div>@ViewData["weak"]</div>
+    </div>
+    <p></p>
+    <div>
+      <strong>Completely resisted by:</strong><div>@ViewData["immune"]</div>
+    </div>
+    <!-- <div>
+      <strong>Weak Against:</strong><div>@pokemon.Move1  @pokemon.Move2  @pokemon.Move3  @pokemon.Move4</div>
+    </div> -->
   </div>
 </center>

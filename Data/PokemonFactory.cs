@@ -27,7 +27,7 @@ namespace Project.Data
                 record.Evolution, 
                 GetRarity(record.Status), 
                 CheckNull(record.Move1, "Move 1"), 
-                CheckNull(record.Move2, "Move 2"),
+                record.Move2,
                 record.Move3, 
                 record.Move4, 
                 CheckNull(record.Image, "Image")

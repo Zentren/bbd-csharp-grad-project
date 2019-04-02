@@ -20,7 +20,7 @@ namespace Project.Data
 
         public async void QueryByName(string name)
         {
-            response = await client.GetTaskAsync("Information/" + name);
+            response = await client.GetTaskAsync("Information/" + name.Substring(0,1).ToUpper() + name.Substring(1).ToLower());
         }
 
         //TODO: Response with number

@@ -5,22 +5,62 @@
 @{
   var pokemon = (Pokemon)ViewData["pokemon"];
 }
+<center>
+  <div>
+    <h1 class="display-4">(@pokemon.Number) @pokemon.Name</h1>
+    <div class="display-4"><img src = @pokemon.Image></div>
+    <div>
+      <strong>Description:</strong><div>@pokemon.Description</div>
+    </div>
+    <p></p>
+    <div>
+      <strong>Rarity:</strong><div>@pokemon.RarityOf</div>
+    </div>
+    <p></p>
+    <div>
+      <strong>Type(s):</strong><div>@pokemon.Type1  @pokemon.Type2 </div>
+    </div>
+    <p></p>
+    <div>
+      <strong>Evolution chain:</strong>
+      <div>
+        
+        @if(!String.IsNullOrEmpty(pokemon.PreEvolution)){
+          <div> 
+            From: 
+            <a href=@("https://localhost:5001/Home/PokemonDisplay?name=" + @pokemon.PreEvolution)>@(@pokemon.PreEvolution)</a>  
+          </div>
+        }
 
-<div class="text-center">
-  <h1 class="display-3">HERE</h1>
-  <h1 class="display-4"><img src = @pokemon.Image></h1>
-  <h1 class="display-4">@pokemon.Name</h1>
-  <h1 class="display-4">@pokemon.Number</h1>
-  <h1 class="display-4">@pokemon.Description</h1>
-  <h1 class="display-4">@pokemon.RarityOf</h1>
-  <h1 class="display-4">@pokemon.Type1</h1>
-  <h1 class="display-4">@pokemon.Type2</h1>
-  <h1 class="display-4">@pokemon.PreEvolution</h1>
-  <h1 class="display-4">@pokemon.Evolution</h1>
-  <h1 class="display-4">@pokemon.Height</h1>
-  <h1 class="display-4">@pokemon.Weight</h1>
-  <h1 class="display-4">@pokemon.Move1</h1>
-  <h1 class="display-4">@pokemon.Move2</h1>
-  <h1 class="display-4">@pokemon.Move3</h1>
-  <h1 class="display-4">@pokemon.Move4</h1>
-</div>
+        @if(!String.IsNullOrEmpty(pokemon.Evolution)){
+          <div>
+            To: 
+            <a href=@("https://localhost:5001/Home/PokemonDisplay?name=" + @pokemon.Evolution)>@(@pokemon.Evolution)</a>
+          </div>
+        }
+    </div>
+    <p></p>
+    <div>
+      <strong>Measurements:</strong><div>Height: @pokemon.Height  Weight: @pokemon.Weight</div>
+    </div>
+    <p></p>
+    <div>
+      <strong>Moves:</strong><div>@pokemon.Move1  @pokemon.Move2  @pokemon.Move3  @pokemon.Move4</div>
+    </div>
+    <p></p>
+    <div>
+      <strong>Strong Against:</strong><div>@ViewData["super"]</div>
+    </div>
+    <p></p>
+    <div>
+      <strong>Weak Against:</strong><div>@ViewData["weak"]</div>
+    </div>
+    <p></p>
+    <div>
+      <strong>Completely resisted by:</strong><div>@ViewData["immune"]</div>
+    </div>
+    <!-- <div>
+      <strong>Weak Against:</strong><div>@pokemon.Move1  @pokemon.Move2  @pokemon.Move3  @pokemon.Move4</div>
+    </div> -->
+  </div>
+</center>

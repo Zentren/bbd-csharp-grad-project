@@ -15,7 +15,10 @@ namespace Project.Controllers
     {
       return View();
     }
-
+    public IActionResult DarkMode()
+    {
+      return View();
+    }
     public IActionResult NumberSearch()
     {
       return View();
@@ -28,13 +31,27 @@ namespace Project.Controllers
 
     public IActionResult PokemonDisplay(String name = null, String number = null)
     {
-      Pokemon poke = pokemonModel.GetPokemonByName(name);
-       
-      ViewData["pokemon"] = poke;
+      try {
 
-      //Use this method to get the string array? And then ship these values off to the view 
-      string[] effectiveness = pokemonModel.GetPokemonEffectiveness();
+        Pokemon poke = pokemonModel.GetPokemonByName(name);
+        ViewData["pokemon"] = poke;
 
+        string[] effectiveness = pokemonModel.GetPokemonEffectiveness();
+        ViewData["super"] = effectiveness[0];
+        ViewData["weak"] = effectiveness[1];
+        ViewData["immune"] = effectiveness[2];
+        
+        return View();
+
+      } catch(Exception e) {
+
+        Console.WriteLine("*******Error*******\n"+e);
+        return View("~/Views/Home/PokemonNotFound.cshtml");
+
+      }
+    }
+
+    public IActionResult PokemonNotFound(){
       return View();
     }
 

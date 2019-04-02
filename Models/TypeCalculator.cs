@@ -6,6 +6,7 @@ namespace Project.Models
 {
     public class TypeCalculator
         {
+            private const int NumberOfTypes = 18;
             /* 
                 Class Constructor
             */
@@ -57,7 +58,7 @@ namespace Project.Models
             public String getSuperEffectiveAgainst(Type Type1)
             {
                 StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < 18; i++)
+                for (int i = 0; i < NumberOfTypes; i++)
                 {
                     if (Effectiveness[Type1][i] == 2)
                     {
@@ -84,7 +85,7 @@ namespace Project.Models
                 StringBuilder sb = new StringBuilder();
                 float[] CombinedEffectiveness = CombineEffectiveness(Type1, Type2);
 
-                for (int i = 0; i < 18; i++)
+                for (int i = 0; i < NumberOfTypes; i++)
                 {
                     if (CombinedEffectiveness[i] >= 2)
                     {
@@ -105,7 +106,7 @@ namespace Project.Models
             public String getTypesSuperEffectiveAgainst(Type Type1)
             {
                 StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < 18; i++)
+                for (int i = 0; i < NumberOfTypes; i++)
                 {
                     if (Effectiveness[(Type)i][(int)Type1] == 2)
                     {
@@ -122,7 +123,7 @@ namespace Project.Models
             if (Type2 == Type.Null)
                 return getTypesSuperEffectiveAgainst(Type1);
                 StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < 18; i++)
+                for (int i = 0; i < NumberOfTypes; i++)
                 {
                     if (Effectiveness[(Type)i][(int)Type1] * Effectiveness[(Type)i][(int)Type2] >= 2)
                     {
@@ -144,7 +145,7 @@ namespace Project.Models
             public String getNotVeryEffectiveAgainst(Type Type1)
             {
                 StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < 18; i++)
+                for (int i = 0; i < NumberOfTypes; i++)
                 {
                     if (Effectiveness[Type1][i] == 0.5F)
                     {
@@ -161,12 +162,14 @@ namespace Project.Models
                 StringBuilder sb = new StringBuilder();
                 float[] CombinedEffectiveness = CombineEffectiveness(Type1, Type2);
 
-                for (int i = 0; i < 18; i++)
+                for (int i = 0; i < NumberOfTypes; i++)
                 {
                     if (CombinedEffectiveness[i] <= 0.5F)
                     {
-                        sb.Append(((Type)i).ToString());
-                        sb.Append(" ");
+                        if (((Type)i!=Type1) || ((Type)i!=Type2)) {
+                            sb.Append(((Type)i).ToString());
+                            sb.Append(" ");
+                        }
                     }
                 }
                 var check = Shorten(sb.ToString());
@@ -182,7 +185,7 @@ namespace Project.Models
             public String getTypesNotVeryEffectiveAgainst(Type Type1)
             {
                 StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < 18; i++)
+                for (int i = 0; i < NumberOfTypes; i++)
                 {
                     if (Effectiveness[(Type)i][(int)Type1] == 0.5F)
                     {
@@ -197,7 +200,7 @@ namespace Project.Models
             public String getTypesNotVeryEffectiveAgainst(Type Type1, Type Type2)
             {
                 StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < 18; i++)
+                for (int i = 0; i < NumberOfTypes; i++)
                 {
                     if (Effectiveness[(Type)i][(int)Type1] * Effectiveness[(Type)i][(int)Type2] <= 0.5F)
                     {
@@ -218,7 +221,7 @@ namespace Project.Models
             public String getTypesImmuneToIt(Type Type1)
             {
                 StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < 18; i++)
+                for (int i = 0; i < NumberOfTypes; i++)
                 {
                     if (Effectiveness[Type1][i] == 0)
                         sb.Append(((Type)i).ToString());
@@ -234,11 +237,12 @@ namespace Project.Models
                 StringBuilder sb = new StringBuilder();
                 float[] CombinedEffectiveness = CombineEffectiveness(Type1, Type2);
 
-                for (int i = 0; i < 18; i++)
+                for (int i = 0; i < NumberOfTypes; i++)
                 {
-                    if (CombinedEffectiveness[i] == 0)
+                    if (CombinedEffectiveness[i] == 0) {
                         sb.Append(((Type)i).ToString());
                         sb.Append(" ");
+                    }
                 }
                 var check = Shorten(sb.ToString());
                 return check;
@@ -253,7 +257,7 @@ namespace Project.Models
             public String getImmuneTo(Type Type1)
             {
                 StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < 18; i++)
+                for (int i = 0; i < NumberOfTypes; i++)
                 {
                     if (Effectiveness[(Type)i][(int)Type1] == 0)
                     {
@@ -268,7 +272,7 @@ namespace Project.Models
             public String getImmuneTo(Type Type1, Type Type2)
             {
                 StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < 18; i++)
+                for (int i = 0; i < NumberOfTypes; i++)
                 {
                     if (Effectiveness[(Type)i][(int)Type1] * Effectiveness[(Type)i][(int)Type2] == 0)
                     {
@@ -315,8 +319,8 @@ namespace Project.Models
 
             public float[] CombineEffectiveness(Type type1, Type type2)
             {
-                float[] PokemonEffectivenes = new float[18];
-                for (int i = 0; i < 18; i++)
+                float[] PokemonEffectivenes = new float[NumberOfTypes];
+                for (int i = 0; i < NumberOfTypes; i++)
                 {
                     PokemonEffectivenes[i] = Effectiveness[type1][i] * Effectiveness[type2][i];
                 }

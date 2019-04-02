@@ -12,12 +12,14 @@ namespace Project.Models {
 
         public PokemonModel() {
             factory = new PokemonFactory();
+            calculator = new TypeCalculator();
             pokemon = null;
         }
 
-        public Pokemon GetPokemonByName(string name) {
+        public Pokemon GetPokemonByName(String name) {
             try {
                 pokemon = factory.GetPokemonByName(name);
+                Console.WriteLine("HERE");
                 return pokemon;
             } catch (Exception e) {
                 throw e;
@@ -25,7 +27,7 @@ namespace Project.Models {
         }
 
         public string[] GetPokemonEffectiveness() {
-            string[] effectiveness = new string[2];
+            string[] effectiveness = new string[3];
             if (pokemon.Type2 == Type.Null) {
                 effectiveness[0] = (calculator.getSuperEffectiveAgainst(pokemon.Type1));
                 effectiveness[1] = (calculator.getNotVeryEffectiveAgainst(pokemon.Type1));
@@ -33,6 +35,7 @@ namespace Project.Models {
             } else { 
                 effectiveness[0] = (calculator.getSuperEffectiveAgainst(pokemon.Type1,pokemon.Type2));
                 effectiveness[1] = (calculator.getNotVeryEffectiveAgainst(pokemon.Type1,pokemon.Type2));
+                // effectiveness[2] = "";
                 effectiveness[2] = (calculator.getTypesImmuneToIt(pokemon.Type1,pokemon.Type2));
             }
             return effectiveness;

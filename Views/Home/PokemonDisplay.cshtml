@@ -24,10 +24,20 @@
     <div>
       <strong>Evolution chain:</strong>
       <div>
-        From: 
-        <a href=@("https://localhost:5001/Home/PokemonDisplay?name=" + @pokemon.PreEvolution??@pokemon.Name)>@(@pokemon.PreEvolution??"None")</a>  
-        To: 
-        <a href=@("https://localhost:5001/Home/PokemonDisplay?name=" + @pokemon.Evolution??@pokemon.Name)>@(@pokemon.Evolution??"None")</a>
+        
+        @if(!String.IsNullOrEmpty(pokemon.PreEvolution)){
+          <div> 
+            From: 
+            <a href=@("https://localhost:5001/Home/PokemonDisplay?name=" + @pokemon.PreEvolution)>@(@pokemon.PreEvolution)</a>  
+          </div>
+        }
+
+        @if(!String.IsNullOrEmpty(pokemon.Evolution)){
+          <div>
+            To: 
+            <a href=@("https://localhost:5001/Home/PokemonDisplay?name=" + @pokemon.Evolution)>@(@pokemon.Evolution)</a>
+          </div>
+        }
     </div>
     <p></p>
     <div>

@@ -62,12 +62,21 @@ namespace Project.Models
                     if (Effectiveness[Type1][i] == 2)
                     {
                         sb.Append(((Type)i).ToString());
+
                         sb.Append(" ");
                     }
                 }
-                return sb.ToString();
+                var check = Shorten(sb.ToString());
+                return check;
             }
+            public string Shorten(string sb)
+            {
 
+                int startIndex = 0;    
+                int endIndex = sb.ToString().Length - 1;    
+                string Reduced = sb.ToString().Substring(startIndex, endIndex);    
+               return Reduced;
+            }
             public String getSuperEffectiveAgainst(Type Type1, Type Type2)
             {
             if (Type2 == Type.Null)
@@ -83,7 +92,8 @@ namespace Project.Models
                         sb.Append(" ");
                     }
                 }
-                return sb.ToString();
+                var check = Shorten(sb.ToString());
+                return check;
             }
 
             /*
@@ -103,7 +113,8 @@ namespace Project.Models
                         sb.Append(" ");
                     }
                 }
-                return sb.ToString();
+                var check = Shorten(sb.ToString());
+                return check;
             }
 
             public String getTypesSuperEffectiveAgainst(Type Type1, Type Type2)
@@ -119,7 +130,8 @@ namespace Project.Models
                         sb.Append(" ");
                     }
                 }
-                return sb.ToString();
+                var check = Shorten(sb.ToString());
+                return check;
             }
 
             /*
@@ -140,7 +152,8 @@ namespace Project.Models
                         sb.Append(" ");
                     }
                 }
-                return sb.ToString();
+                var check = Shorten(sb.ToString());
+                return check;
             }
 
             public String getNotVeryEffectiveAgainst(Type Type1, Type Type2)
@@ -156,7 +169,8 @@ namespace Project.Models
                         sb.Append(" ");
                     }
                 }
-                return sb.ToString();
+                var check = Shorten(sb.ToString());
+                return check;
             }
 
             /*
@@ -176,7 +190,8 @@ namespace Project.Models
                         sb.Append(" ");
                     }
                 }
-                return sb.ToString();
+                var check = Shorten(sb.ToString());
+                return check;
             }
 
             public String getTypesNotVeryEffectiveAgainst(Type Type1, Type Type2)
@@ -190,7 +205,8 @@ namespace Project.Models
                         sb.Append(" ");
                     }
                 }
-                return sb.ToString();
+                var check = Shorten(sb.ToString());
+                return check;
             }
 
             /*
@@ -208,6 +224,8 @@ namespace Project.Models
                         sb.Append(((Type)i).ToString());
                         sb.Append(" ");
                 }
+                // var check = Shorten(sb.ToString());
+                // return check;
                 return sb.ToString();
             }
 
@@ -222,7 +240,8 @@ namespace Project.Models
                         sb.Append(((Type)i).ToString());
                         sb.Append(" ");
                 }
-                return sb.ToString();
+                var check = Shorten(sb.ToString());
+                return check;
             }
 
             /*
@@ -242,7 +261,8 @@ namespace Project.Models
                         sb.Append(" ");
                     }
                 }
-                return sb.ToString();
+                var check = Shorten(sb.ToString());
+                return check;
             }
 
             public String getImmuneTo(Type Type1, Type Type2)
@@ -256,7 +276,8 @@ namespace Project.Models
                         sb.Append(" ");
                     }
                 }
-                return sb.ToString();
+                var check = Shorten(sb.ToString());
+                return check;
             }
 
             /*

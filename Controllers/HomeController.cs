@@ -31,7 +31,12 @@ namespace Project.Controllers
       try {
 
         Pokemon poke = pokemonModel.GetPokemonByName(name);
+        string[] effectiveness = pokemonModel.GetPokemonEffectiveness();
         ViewData["pokemon"] = poke;
+        ViewData["super"] = effectiveness[0];
+        ViewData["weak"] = effectiveness[1];
+        ViewData["immune"] = effectiveness[2];
+        
         return View();
 
       } catch(Exception e) {
@@ -41,7 +46,7 @@ namespace Project.Controllers
 
       }
       //Use this method to get the string array? And then ship these values off to the view 
-      //string[] effectiveness = pokemonModel.GetPokemonEffectiveness();
+      //
     }
 
     public IActionResult PokemonNotFound(){
